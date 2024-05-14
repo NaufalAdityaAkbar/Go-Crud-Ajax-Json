@@ -1,0 +1,42 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">{{ .title }}</h5>
+    </div>
+    <form id="form-add" action="/mahasiswa/tambah" method="POST">
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="">Nama Lengkap</label>
+          <input type="text" name="nama_lengkap" value="{{ .mahasiswa.Namalengkap }}" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">Jenis Kelamin</label>
+          <select name="jenis_kelamin" class="form-control">
+            <option {{ if eq .mahasiswa.JenisKelamin `L` }} selected {{ end }} value="L">Laki-Laki</option>
+            <option {{ if eq .mahasiswa.JenisKelamin `P` }} selected {{ end }} value="P">Perempuan</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="">Tempat Lahir</label>
+          <input type="text" name="tempat_lahir" value="{{ .mahasiswa.TempatLahir }}" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">Tanggal lahir</label>
+          <input type="date" name="tanggal_lahir" value="{{ .mahasiswa.TanggalLahir }}" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">Alamat</label>
+          <textarea name="alamat" class="form-control">{{ .mahasiswa.Alamat }}</textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        {{ if .mahasiswa.Id }}
+        <input type="hidden" name="id" value="{{ .mahasiswa.Id }}">
+        <button type="submit" class="btn btn-primary">Update</button>
+        {{ else }}
+        <button type="submit" class="btn btn-primary">Save</button>
+        {{ end }}
+      </div>
+    </form>
+  </div>
+</div>

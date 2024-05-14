@@ -1,0 +1,12 @@
+{{ range .mahasiswa }}
+<tr>
+  <td>{{ .Namalengkap }}</td>
+  <td>{{ .JenisKelamin }}</td>
+  <td>{{ .TempatLahir }}, {{ .TanggalLahir }}</td>
+  <td>{{ .Alamat }}</td>
+  <td>
+    <button data-id="{{ .Id }}" class="btn btn-danger btn-sm hapus">Delete</button>
+    <button data-id="{{ .Id }}" class="btn btn-warning btn-sm edit">Update</button>
+  </td>
+</tr>
+{{ end }}
